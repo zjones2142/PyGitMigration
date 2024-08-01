@@ -35,6 +35,6 @@ def filter_csv(input_csv, output_csv, allowed_list):
 if __name__ == "__main__":
   input_file = "FILEPATH"
   output_file = "FILEPATH"
-  allowedString = ""
+  allowedString = "" #comma seperated list
   allowed_list = allowedString.split(',')
   filter_csv(input_file, output_file, allowed_list)

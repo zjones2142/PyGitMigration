@@ -19,7 +19,7 @@ def clone_repos(orgName):
         requests.exceptions.RequestException: If an HTTP request error occurs.
         subprocess.CalledProcessError: If a git clone command fails.
     """
-    repos_file = "FILEPATH to store json in"+f"{orgName}-projects.json"
+    repos_file = "FILEPATH of repos json"+f"{orgName}-projects.json"
     try:
         with open(repos_file, 'r', encoding='utf-8') as f:
             repos_data = json.load(f)
@@ -34,10 +34,13 @@ def clone_repos(orgName):
 
         try:
             # Use the GitPython library for cloning
-            git.Repo.clone_from(url, f"FILEPATH to repo\\{orgName}\\{repo['name']}")
+            git.Repo.clone_from(url, f"FILEPATH to repo parent folder\\{orgName}\\{repo['name']}")
             print(f"Cloned repository: {repo['name']}")
         except git.GitCommandError as e:
             print(f"Error cloning {repo['name']}: {e}")
 
 if __name__ == "__main__":
-    clone_repos("repoName to clone")
+    orgNames = '' #seperate with commas
+    orgList = orgNames.split(',')
+    for org in orgList:
+        clone_repos(org)

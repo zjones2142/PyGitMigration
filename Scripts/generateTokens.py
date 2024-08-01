@@ -26,7 +26,7 @@ def generate_access_token(username, password, note, scopes):
   token = response.json()["token"]
   return token
 
-def generate_tokens_for_orgs(username, password, note, scopes, orgs, output_file):
+def generate_tokens_for_orgs(username, password, scopes, orgs, output_file):
   """Generates access tokens for multiple GitHub organizations and stores them in a CSV file.
 
   Args:
@@ -51,9 +51,9 @@ def generate_tokens_for_orgs(username, password, note, scopes, orgs, output_file
 if __name__ == "__main__":
   username = "your_username"
   password = "your_password"  # Replace with secure password storage
-  note = "Generated token for script"
   scopes = ["repo", "admin:repo_hook"]  # Adjust scopes as needed
-  orgs = ["org1", "org2"]
+  orgsString = "" #comma seperated list of org names
+  orgs = orgsString.split(',')
   output_file = "org_tokens.csv"
 
-  generate_tokens_for_orgs(username, password, note, scopes, orgs, output_file)
+  generate_tokens_for_orgs(username, password, scopes, orgs, output_file)

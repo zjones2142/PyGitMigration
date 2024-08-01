@@ -25,7 +25,6 @@ def create_repositories(org_name, repo_names, github_token):
     for repo_name in repo_names:
         data = {
             "name": repo_name,
-            "private": False  # Set to True for private repositories
         }
         time.sleep(2)
         response = requests.post(url, headers=headers, data=json.dumps(data))
@@ -44,8 +43,8 @@ def main():
     with open(org_keys_file, 'r') as csvfile:
         reader = csv.reader(csvfile)
         for org, token in reader:
-            org_token_dict[org.lower().replace('-de', '')] = token
-            org_name_dict[org.lower().replace('-de', '')] = org
+            org_token_dict[org.lower()] = token
+            org_name_dict[org.lower()] = org
 
     root_dir = 'FILEPATH to root directory where repos are stored'
 
@@ -66,7 +65,6 @@ def main():
                     #print(f"\tCreating repo: {repo}")
         else:
             print(f"Token not found for group {group_dir}, skipping...\n")
-
 
 if __name__ == "__main__":
     main()
