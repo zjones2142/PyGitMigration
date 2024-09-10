@@ -1,4 +1,4 @@
-# __IN PROGRESS__
+# __Migration From GitLab To Github With Python__
 This is a Collection of Python scripts used to gather information from Git APIs (GitLab and GitHub) and then migrate code to GitHub.
 
 ## Steps For Execution
